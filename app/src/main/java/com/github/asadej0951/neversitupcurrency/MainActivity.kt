@@ -52,6 +52,10 @@ class MainActivity : AppCompatActivity() {
         val delayMillis: Long = 60000
         handler.postDelayed(apiRunnable, delayMillis)
         setInit()
+        mViewModel.eventClauseNo1(binding.edTest1,this,binding.imageIcon1)
+        mViewModel.eventClauseNo2(binding.edTest2,this,binding.imageIcon2)
+        mViewModel.eventClauseNo3(binding.edTest3,this,binding.imageIcon3)
+        mViewModel.eventClauseNo4(binding.edTest4,this,binding.imageIcon4)
     }
 
     private val apiRunnable = object : Runnable {
@@ -87,7 +91,9 @@ class MainActivity : AppCompatActivity() {
                 mViewModel.dialogList(this, arrayListString) { string ->
                     indexDataArrayList = arrayListString.indexOf(string)
                     setDataView(mDataArrayList[indexDataArrayList].bpi)
-                    calculate(binding.editTextSelect.text.toString())
+                    if (binding.editTextSelect.text.toString() != ""){
+                        calculate(binding.editTextSelect.text.toString())
+                    }
                 }
             }else{
                 eventClickCard()
